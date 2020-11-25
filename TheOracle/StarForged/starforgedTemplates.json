@@ -1,0 +1,359 @@
+{
+  "NPC": {
+    "Aliases": [
+      "npc",
+      "createnpc",
+      "newnpc"
+    ],
+    "Surtitle": {
+      "Text": "Non-Player Character"
+    },
+    "Title": {
+      "Text": "[Char Name]"
+    },
+    "FieldTypes": {
+      "First Look": {
+        "Oracle": "[Character First Look]",
+        "Min": 2,
+        "Max": 3,
+        "Emoji": "👀"
+      },
+      "Disposition": {
+        "Oracle": "[Disposition]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "👋"
+      },
+      "Role": {
+        "Oracle": "[Character Role]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "🎭"
+      },
+      "Goal": {
+        "Oracle": "[Character Goal]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "❗️"
+      },
+      "Aspect": {
+        "Oracle": "[Character Aspects]",
+        "Min": 0,
+        "Max": 3,
+        "Emoji": "🔍"
+      }
+    }
+  },
+  "Planet": {
+    "Aliases": [
+      "generateplanet",
+      "planet"
+    ],
+    "Rename": false,
+    "Variables": {
+      "Region": {
+        "Options": [
+          "Terminus",
+          "Outlands",
+          "Expanse"
+        ]
+      },
+      "PlanetType": {
+        "Oracle": "[PlanetType]"
+      }
+    },
+    "Surtitle": {
+      "Text": "{Region} {PlanetType} World"
+    },
+    "Title": {
+      "Name": "{Planet placeholder name/seed?}"
+    },
+    "Thumbnail": {
+      "URL": "[]{PlanetType}.icon]"
+    },
+    "Description": {
+      "Text": "[{PlanetType}.description]"
+    },
+    "FieldTypes": {
+      "Orbits": {
+        "Oracle": "[Stellar Object]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "☀️"
+      },
+      "Atmosphere": {
+        "Oracle": "[{PlanetType}.atmosphere]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "☁️"
+      },
+      "Settlements": {
+        "Oracle": "[{PlanetType}.{Region}.settlements]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "🏙"
+      },
+      "Observed From Space": {
+        "Oracle": "[{PlanetType}.observedFromSpace]",
+        "Min": 1,
+        "Max": 3,
+        "Emoji": "👀"
+      },
+      "Closer Look": {
+        "Oracle": "[{PlanetType}.closerLook]",
+        "Min": 0,
+        "Max": 3,
+        "Emoji": "🔍"
+      },
+      "Life": {
+        "Oracle": "[{PlanetType}.life]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "🦖"
+      },
+      "Biome": {
+        "Requires": {
+          "Attribute": "{PlanetType}",
+          "Value": "vital"
+        },
+        "Oracle": "[{PlanetType}.diversity]",
+        "Min": 0,
+        "Max": "{biome.value}",
+        "Emoji": "🌍"
+      }
+    }
+  },
+  "Settlement": {
+    "Aliases": [
+      "generatesettlement",
+      "settlement"
+    ],
+    "Variables": {
+      "Region": {
+        "Options": [
+          "Terminus",
+          "Outlands",
+          "Expanse"
+        ]
+      },
+      "Location": {
+        "Oracle": "[Settlement Location]",
+        "Options": {
+          "Planetside": {
+            "Emoji": "🪐"
+          },
+          "Orbital": {
+            "Emoji": "🛰"
+          },
+          "Deep space": {
+            "Emoji": "🌌"
+          }
+        }
+      }
+    },
+    "Surtitle": {
+      "Text": "{Region} {Location} Settlement"
+    },
+    "Title": {
+      "Text": "[settlement name]"
+    },
+    "FieldTypes": {
+      "Population": {
+        "Oracle": "[settlement {region} population]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "👥"
+      },
+      "First Look": {
+        "Oracle": "[Settlement First Look]",
+        "Min": 1,
+        "Max": 3,
+        "Emoji": "👀"
+      },
+      "Initial Contact": {
+        "Oracle": "[settlement initial contact]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "👋"
+      },
+      "Authority": {
+        "Oracle": "[settlement authority]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "👑"
+      },
+      "Project": {
+        "Oracle": "[settlement projects]",
+        "Min": 0,
+        "Max": 2,
+        "Emoji": "🛠"
+      },
+      "Trouble": {
+        "Oracle": "[settlement trouble]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "⚠️"
+      }
+    }
+  },
+  "Creature": {
+    "Variables": {
+      "Environment": {
+        "Oracle": "[Creature Environment]",
+        "Void": {
+          "Emoji": "🌌"
+        },
+        "Interior": {
+          "Emoji": "🚪"
+        },
+        "Land": {
+          "Emoji": "⛰"
+        },
+        "Liquid": {
+          "Emoji": "💧"
+        },
+        "Air": {
+          "Emoji": "☁️"
+        }
+      }
+    },
+    "Aliases": [
+      "generatecreature",
+      "creature"
+    ],
+    "Surtitle": {},
+    "Title": {},
+    "Description": {},
+    "Footer": {},
+    "FieldTypes": {
+      "Scale": {
+        "Oracle": "[creature scale]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "📏"
+      },
+      "Basic Form": {
+        "Oracle": "[Basic form {environment}]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "📐"
+      },
+      "First Look": {
+        "Oracle": "[creature first look]",
+        "Min": 2,
+        "Max": 3,
+        "Emoji": "👀"
+      },
+      "Encountered Behavior": {
+        "Oracle": "[Creature encountered behavior]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "🎭"
+      },
+      "Revealed Aspect": {
+        "Oracle": "[Creature revealed aspects]",
+        "Min": 0,
+        "Max": 3,
+        "Emoji": "🔍"
+      }
+    }
+  },
+  "Starship": {
+    "Variables": {
+      "Region": {
+        "Options": [
+          "Terminus",
+          "Outlands",
+          "Expanse"
+        ]
+      }
+    },
+    "Aliases": [
+      "generatestarship",
+      "starship",
+      "spaceship",
+      "ship"
+    ],
+    "Surtitle": {
+      "Text": "Starship ({region})"
+    },
+    "Title": {
+      "Text": "[starship name]"
+    },
+    "FieldTypes": {
+      "Starship Type": {
+        "Oracle": "[starship type]",
+        "Min": 1,
+        "Max": 1,
+        "Emoji": "🎭"
+      },
+      "Initial contact": {
+        "Oracle": "[starship initial contact]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "👋"
+      },
+      "First look": {
+        "Oracle": "[starship first look]",
+        "Min": 1,
+        "Max": 2,
+        "Emoji": "👀"
+      },
+      "Mission": {
+        "Oracle": "[starship mission {region}]",
+        "Min": 0,
+        "Max": 1,
+        "Emoji": "❗️"
+      }
+    },
+    "AlternateOutput": [
+      {
+        "Trigger": {
+          "Field": "Starship type",
+          "Value": "Fleet"
+        },
+        "Contents": {
+          "Surtitle": {
+            "Text": "Fleet ({region})"
+          },
+          "Title": {
+            "Text": "Starship Fleet"
+          },
+          "FieldTypes": {
+            "Type": {
+              "Oracle": "[starship fleet]",
+              "Min": 1,
+              "Max": 1,
+              "Emoji": "🎭"
+            },
+            "Initial contact": {
+              "Oracle": "[starship initial contact]",
+              "Min": 0,
+              "Max": 1,
+              "Emoji": "👋"
+            },
+            "First look": {
+              "Oracle": "[starship first look]",
+              "Min": 1,
+              "Max": 2,
+              "Emoji": "👀"
+            },
+            "Mission": {
+              "Oracle": "[starship mission {region}]",
+              "Min": 0,
+              "Max": 1,
+              "Emoji": "❗️"
+            }
+          }
+        }
+      },
+      {
+        "Trigger": {
+          "Field": "starship type",
+          "Value": "ships in conflict"
+        },
+        "RepeatCard": 2
+      }
+    ]
+  }
+}
