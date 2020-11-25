@@ -69,7 +69,7 @@
       "Name": "{Planet placeholder name/seed?}"
     },
     "Thumbnail": {
-      "URL": "[]{PlanetType}.icon]"
+      "URL": "[{PlanetType}.icon]"
     },
     "Description": {
       "Text": "[{PlanetType}.description]"
