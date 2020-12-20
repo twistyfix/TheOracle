@@ -4,6 +4,7 @@ namespace TheOracle.GameCore.Assets
 {
     public class CountingAssetTrack : ICountingAssetTrack
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int StartingValue { get; set; }
 

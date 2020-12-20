@@ -6,9 +6,11 @@ namespace TheOracle.GameCore.Assets
 {
     public class AssetField : IAssetField
     {
+        public int Id { get; set; }
+
         public string Text { get; set; }
         public bool Enabled { get; set; }
-        public List<string> InputFields { get; set; }
+        public List<InputField> InputFields { get; set; }
 
         public AssetField ShallowCopy()
         {

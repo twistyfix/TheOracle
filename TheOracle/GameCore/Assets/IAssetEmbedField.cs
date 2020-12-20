@@ -9,6 +9,7 @@ namespace TheOracle.GameCore.Assets
 
     public class AssetEmbedField : IAssetEmbedField
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string ActiveText { get; set; }
         public string InactiveText { get; set; }

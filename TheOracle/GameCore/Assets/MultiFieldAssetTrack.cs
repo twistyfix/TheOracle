@@ -9,6 +9,8 @@ namespace TheOracle.GameCore.Assets
         {
             Fields = new List<AssetEmbedField>();
         }
+        public int Id { get; set; }
+
         public List<AssetEmbedField> Fields { get; set; }
 
         internal MultiFieldAssetTrack DeepCopy()

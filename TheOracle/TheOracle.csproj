@@ -413,4 +413,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\ThirdPartyContent\" />
+  </ItemGroup>
+
 </Project>

@@ -8,7 +8,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -176,7 +176,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -353,7 +353,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -383,7 +383,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -413,7 +413,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -443,7 +443,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -473,7 +473,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -507,7 +507,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -537,7 +537,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -567,7 +567,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {
@@ -681,8 +681,8 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "One",
-      "Two"
+      {"Title": "One"},
+      { "Title": "Two" }
     ],
     "AssetFields": [
       {
@@ -771,8 +771,8 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Name",
-      "Stat"
+      {"Title": "Name"},
+      { "Title": "Stat" }
     ],
     "AssetFields": [
       {
@@ -870,7 +870,7 @@
       {
         "Text": "Give your favorite gun a name. When you __Clash__ with it, add +1. When you __Endure Stress__ while wielding it, add +1 and take +1 momentum on a hit.",
         "InputFields": [
-          "Name"
+          {"Title": "Name"}
         ]
       }
     ]
@@ -1138,7 +1138,7 @@
       "Version": "1b-091720"
     },
     "InputFields": [
-      "Last of"
+      {"Title": "Last of"}
     ],
     "AssetFields": [
       {
@@ -1205,7 +1205,7 @@
     },
     "Description": "Once you fill the third box on your bonds legacy track, you may take this asset at no cost.",
     "InputFields": [
-      "Name"
+      {"Title": "Name"}
     ],
     "AssetFields": [
       {

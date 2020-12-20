@@ -84,6 +84,7 @@ namespace TheOracle
             var AssetList = new List<Asset>();
             if (File.Exists(ironAssetsPath)) AssetList.AddRange(JsonConvert.DeserializeObject<List<Asset>>(File.ReadAllText(ironAssetsPath)));
             if (File.Exists(starAssetsPath)) AssetList.AddRange(JsonConvert.DeserializeObject<List<Asset>>(File.ReadAllText(starAssetsPath)));
+            
 
             var delveThemePath = Path.Combine("IronSworn", "themes.json");
             var delveDomainPath = Path.Combine("IronSworn", "domains.json");
@@ -102,7 +103,7 @@ namespace TheOracle
                 .AddSingleton<RuleService>()
                 .AddSingleton<HookedEvents>()
                 .AddSingleton<ReactionService>()
-                .AddSingleton(AssetList)
+                .AddSingleton(new AssetService(AssetList))
                 .AddSingleton(delveService)
                 .AddScoped<NpcFactory>()
                 .AddSingleton<InteractiveService>()

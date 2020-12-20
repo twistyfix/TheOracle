@@ -18,7 +18,7 @@ namespace TheOracle.GameCore.Assets
         public Asset()
         {
             AssetFields = new List<AssetField>();
-            InputFields = new List<string>();
+            InputFields = new List<InputField>();
             MultiFieldAssetTrack = new MultiFieldAssetTrack();
             NumericAssetTrack = new NumericAssetTrack();
             CountingAssetTrack = new CountingAssetTrack();
@@ -37,6 +37,7 @@ namespace TheOracle.GameCore.Assets
             return asset;
         }
 
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string IconUrl { get; set; }
@@ -57,7 +58,7 @@ namespace TheOracle.GameCore.Assets
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public NumericAssetTrack NumericAssetTrack { get; set; } = null;
 
-        public List<string> InputFields { get; set; }
+        public List<InputField> InputFields { get; set; }
 
         internal List<string> arguments { get; set; } = new List<string>();
 
@@ -119,9 +120,9 @@ namespace TheOracle.GameCore.Assets
                     asset.arguments.Add(descValues[1]);
                 }
 
-                if (!embed.Fields.Any(f => f.Value.Contains(input))) continue;
+                if (!embed.Fields.Any(f => f.Value.Contains(input.ToString()))) continue;
 
-                EmbedField field = embed.Fields.First(f => f.Value.Contains(input));
+                EmbedField field = embed.Fields.First(f => f.Value.Contains(input.ToString()));
 
                 if (!field.Value.UndoFormatString(AssetResources.UserInputField, out string[] fldValues, true)) continue;
                 asset.arguments.Add(fldValues[1]);

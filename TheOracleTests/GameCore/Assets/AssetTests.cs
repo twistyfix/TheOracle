@@ -31,8 +31,8 @@ namespace TheOracle.GameCore.Assets.Tests
             asset2.AssetFields.Add(new AssetField { Text = @"Skilled: When you make a move outside..." });
             asset2.AssetFields.Add(new AssetField { Text = @"Shield-Kin: When you Clash or Battle..." });
             asset2.AssetFields.Add(new AssetField { Text = @"Bonded: Once you mark a bond with..." });
-            asset2.InputFields.Add("Name");
-            asset2.InputFields.Add("Expertise");
+            asset2.InputFields.Add(new InputField { Title = "Name" });
+            asset2.InputFields.Add(new InputField { Title = "Expertise" });
             asset2.NumericAssetTrack = new NumericAssetTrack { Min = 0, Max = 4, ActiveNumber = 0 };
 
             var asset3 = new Asset();

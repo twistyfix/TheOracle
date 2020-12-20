@@ -9,6 +9,7 @@ namespace TheOracle.GameCore.Oracle
 {
     public class StandardOracle : IOracleEntry
     {
+        public int Id { get; set; }
         public int Chance { get; set; }
         public string Description { get; set; }
         public string Prompt { get; set; }

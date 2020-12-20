@@ -5,6 +5,8 @@ namespace TheOracle.GameCore.Assets
     public class NumericAssetTrack : INumericAssetTrack
     {
         private int activeNumber;
+        public int Id { get; set; }
+
 
         public string Name { get; set; }
         public int Min { get; set; }
