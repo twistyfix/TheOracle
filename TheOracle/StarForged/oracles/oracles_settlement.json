@@ -151,7 +151,7 @@
     } ]
   }, {
     "Name": "Initial Contact",
-    "Initial": true,
+    "Emoji": "👋",
     "Oracle Table": [ {
       "Chance": 10,
       "Description": "Welcoming"
@@ -188,6 +188,7 @@
     } ]
   }, {
     "Name": "Authority",
+    "Emoji": "👑",
     "Initial": true,
     "Oracle Table": [ {
       "Chance": 15,
@@ -317,6 +318,7 @@
     } ]
   }, {
     "Name": "Trouble",
+    "Emoji": "⚠️",
     "Oracle Table": [ {
       "Chance": 3,
       "Description": "Betrayal from within"
@@ -410,6 +412,7 @@
     } ]
   }, {
     "Name": "Name",
+    "Initial": true,
     "Oracle Table": [ {
       "Chance": 1,
       "Description": "Acropolis"
