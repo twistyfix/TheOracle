@@ -6,6 +6,7 @@
   },
   "Oracles": [ {
     "Name": "First Look",
+    "Emoji": "👀",
     "Initial": true,
     "Min rolls": 2,
     "Max rolls": 3,
@@ -102,6 +103,7 @@
     } ]
   }, {
     "Name": "Disposition",
+    "Emoji": "👋",
     "Initial": true,
     "Oracle Table": [ {
       "Chance": 6,
@@ -142,6 +144,7 @@
     } ]
   }, {
     "Name": "Role",
+    "Emoji": "🎭",
     "Initial": true,
     "Oracle Table": [ {
       "Chance": 2,
@@ -290,6 +293,7 @@
     } ]
   }, {
     "Name": "Goal",
+    "Emoji": "❗️",
     "Oracle Table": [ {
       "Chance": 2,
       "Description": "Avenge a wrong"
@@ -413,6 +417,7 @@
     } ]
   }, {
     "Name": "Aspects",
+    "Emoji": "🔍",
     "Max rolls": 3,
     "Oracle Table": [ {
       "Chance": 1,

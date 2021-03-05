@@ -6,42 +6,45 @@
   },
   "Oracles": [ {
     "Name": "Planetary Class",
+    "Initial": true,
     "Oracle Table": [ {
       "Chance": 15,
-      "Description": "[Desert World]"
+      "Description": "Desert World"
     }, {
       "Chance": 30,
-      "Description": "[Furnace World]"
+      "Description": "Furnace World"
     }, {
       "Chance": 35,
-      "Description": "[Grave World]"
+      "Description": "Grave World"
     }, {
       "Chance": 50,
-      "Description": "[Ice World]"
+      "Description": "Ice World"
     }, {
       "Chance": 65,
-      "Description": "[Jovian World]"
+      "Description": "Jovian World"
     }, {
       "Chance": 70,
-      "Description": "[Jungle World]"
+      "Description": "Jungle World"
     }, {
       "Chance": 75,
-      "Description": "[Ocean World]"
+      "Description": "Ocean World"
     }, {
       "Chance": 90,
-      "Description": "[Rocky World]"
+      "Description": "Rocky World"
     }, {
       "Chance": 92,
-      "Description": "[Shattered World]"
+      "Description": "Shattered World"
     }, {
       "Chance": 98,
-      "Description": "[Tainted World]"
+      "Description": "Tainted World"
     }, {
       "Chance": 100,
-      "Description": "[Vital World]"
+      "Description": "Vital World"
     } ]
   }, {
     "Name": "Lifebearing Planetside Complication",
+    "Emoji": "⚠️",
+    "Life": [ "Simple", "Sparse", "Diverse", "Bountiful", "Overrun" ],
     "Oracle Table": [ {
       "Chance": 3,
       "Description": "Corrupted or mutated lifeform"
@@ -147,6 +150,8 @@
     } ]
   }, {
     "Name": "Lifeless Planetside Complication",
+    "Emoji": "⚠️",
+    "Life": [ "None", "Extinct" ],
     "Oracle Table": [ {
       "Chance": 3,
       "Description": "Life is revealed or takes an unexpected form"
@@ -228,6 +233,8 @@
     } ]
   }, {
     "Name": "Lifebearing Planetside Opportunity",
+    "Emoji": "🍀",
+    "Life": [ "Simple", "Sparse", "Diverse", "Bountiful", "Overrun" ],
     "Oracle Table": [ {
       "Chance": 4,
       "Description": "Clue to a lifeform's nature or vulnerabilities"
@@ -306,6 +313,8 @@
     } ]
   }, {
     "Name": "Lifeless Planetside Opportunity",
+    "Emoji": "🍀",
+    "Life": [ "None", "Extinct" ],
     "Oracle Table": [ {
       "Chance": 5,
       "Description": "Abandoned camp or vehicle"

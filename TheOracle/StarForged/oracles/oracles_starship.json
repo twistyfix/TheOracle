@@ -119,6 +119,7 @@
     } ]
   }, {
     "Name": "Initial Contact",
+    "Emoji": "👋",
     "Initial": true,
     "Oracle Table": [ {
       "Chance": 2,
@@ -159,6 +160,7 @@
     } ]
   }, {
     "Name": "First Look",
+    "Emoji": "👀",
     "Initial": true,
     "Max rolls": 2,
     "Oracle Table": [ {
@@ -230,6 +232,7 @@
     } ]
   }, {
     "Name": "Mission",
+    "Emoji": "❗️",
     "Region": "Terminus",
     "Oracle Table": [ {
       "Chance": 3,
@@ -331,6 +334,7 @@
   }, {
     "Name": "Mission",
     "Region": "Outlands",
+    "Emoji": "❗️",
     "Oracle Table": [ {
       "Chance": 2,
       "Description": "Blockade a location"
@@ -431,6 +435,7 @@
   }, {
     "Name": "Mission",
     "Region": "Expanse",
+    "Emoji": "❗️",
     "Oracle Table": [ {
       "Chance": 2,
       "Description": "Blockade a location"

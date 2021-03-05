@@ -5,7 +5,7 @@
     "Version": "022821-wip"
   },
   "Oracles": [ {
-    "Name": "First Look",
+    "Name": "First Look", "Emoji": "👀",
     "Initial": true,
     "Max rolls": 2,
     "Oracle Table": [ {

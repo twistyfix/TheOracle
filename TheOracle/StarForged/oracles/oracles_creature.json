@@ -6,6 +6,7 @@
   },
   "Oracles": [ {
     "Name": "Environment",
+    "Initial": true,
     "Oracle Table": [ {
       "Chance": 5,
       "Description": "Space"
@@ -24,6 +25,8 @@
     } ]
   }, {
     "Name": "Scale",
+    "Initial": true,
+    "Emoji": "📏",
     "Oracle Table": [ {
       "Chance": 3,
       "Description": "Minuscule (bug-sized)"
@@ -60,6 +63,7 @@
     } ]
   }, {
     "Name": "Basic Form",
+    "Emoji": "📐",
     "Environment": "Space",
     "Oracle Table": [ {
       "Chance": 5,
@@ -118,6 +122,7 @@
     } ]
   }, {
     "Name": "Basic Form",
+    "Emoji": "📐",
     "Environment": "Interior",
     "Oracle Table": [ {
       "Chance": 3,
@@ -176,6 +181,7 @@
     } ]
   }, {
     "Name": "Basic Form",
+    "Emoji": "📐",
     "Environment": "Land",
     "Oracle Table": [ {
       "Chance": 2,
@@ -234,6 +240,7 @@
     } ]
   }, {
     "Name": "Basic Form",
+    "Emoji": "📐",
     "Environment": "Liquid",
     "Oracle Table": [ {
       "Chance": 5,
@@ -292,6 +299,7 @@
     } ]
   }, {
     "Name": "Basic Form",
+    "Emoji": "📐",
     "Environment": "Air",
     "Oracle Table": [ {
       "Chance": 2,
@@ -350,6 +358,7 @@
     } ]
   }, {
     "Name": "First Look",
+    "Emoji": "👀",
     "Min rolls": 2,
     "Max rolls": 3,
     "Oracle Table": [ {
@@ -505,6 +514,7 @@
     } ]
   }, {
     "Name": "Behavior",
+    "Emoji": "🎭",
     "Oracle Table": [ {
       "Chance": 5,
       "Description": "Ambusher"
@@ -571,6 +581,7 @@
     } ]
   }, {
     "Name": "Aspects",
+    "Emoji": "🔍",
     "Max rolls": 3,
     "Oracle Table": [ {
       "Chance": 2,

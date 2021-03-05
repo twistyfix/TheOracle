@@ -19,6 +19,7 @@
     } ]
   }, {
     "Name": "Scale",
+    "Emoji": "📏",
     "Initial": true,
     "Oracle Table": [ {
       "Chance": 30,

@@ -9,6 +9,7 @@
   "Thumbnail": "https://i.imgur.com/HKpmALQ.png",
   "Oracles": [ {
     "Name": "Atmosphere",
+    "Emoji": "☁️",
     "Initial": true,
     "Oracle Table": [ {
       "Chance": 93,
@@ -28,6 +29,7 @@
     } ]
   }, {
     "Name": "Settlements",
+    "Emoji": "🏙",
     "Initial": true,
     "Region": "Terminus",
     "Oracle Table": [ {
@@ -48,6 +50,7 @@
     } ]
   }, {
     "Name": "Settlements",
+    "Emoji": "🏙",
     "Initial": true,
     "Region": "Outlands",
     "Oracle Table": [ {
@@ -65,6 +68,7 @@
     } ]
   }, {
     "Name": "Settlements",
+    "Emoji": "🏙",
     "Initial": true,
     "Region": "Expanse",
     "Oracle Table": [ {
@@ -79,6 +83,7 @@
     } ]
   }, {
     "Name": "Observed From Space",
+    "Emoji": "👀",
     "Initial": true,
     "Max rolls": 2,
     "Oracle Table": [ {
@@ -114,6 +119,7 @@
     } ]
   }, {
     "Name": "Closer Look",
+    "Emoji": "🔍",
     "Max rolls": 3,
     "Oracle Table": [ {
       "Chance": 7,
@@ -163,6 +169,7 @@
     } ]
   }, {
     "Name": "Life",
+    "Emoji": "🦠",
     "Oracle Table": [ {
       "Chance": 35,
       "Description": "None"

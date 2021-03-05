@@ -6,6 +6,7 @@
   },
   "Oracles": [ {
     "Name": "Space Sighting",
+    "Emoji": "🌌",
     "Region": "Terminus",
     "Oracle Table": [ {
       "Chance": 15,
@@ -70,6 +71,7 @@
     } ]
   }, {
     "Name": "Space Sighting",
+    "Emoji": "🌌",
     "Region": "Outlands",
     "Oracle Table": [ {
       "Chance": 15,
@@ -134,6 +136,7 @@
     } ]
   }, {
     "Name": "Space Sighting",
+    "Emoji": "🌌",
     "Region": "Expanse",
     "Oracle Table": [ {
       "Chance": 15,
@@ -198,6 +201,7 @@
     } ]
   }, {
     "Name": "Stellar Object",
+    "Emoji": "⭐️",
     "Oracle Table": [ {
       "Chance": 15,
       "Description": "Smoldering red star"
@@ -550,6 +554,7 @@
     } ]
   }, {
     "Name": "Spaceborne Complication",
+    "Emoji": "⚠️",
     "Description": "Use this oracle as an alternative to the __Pay the Price__ table and the creative prompt oracles when you want inspiration for a trouble on an interstellar journey, or to generate a perilous event at a spaceborne facility.",
     "Oracle Table": [ {
       "Chance": 3,
@@ -656,6 +661,7 @@
     } ]
   }, {
     "Name": "Spaceborne Opportunity",
+    "Emoji": "🍀",
     "Description": "Roll on this table when you need inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you __Undertake an Expedition__, or if you __Explore a Waypoint__ and find an opportunity.",
     "Oracle Table": [ {
       "Chance": 4,
