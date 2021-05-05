@@ -85,7 +85,8 @@ namespace TheOracle.StarForged.Starships
 
             ship.InitialContact = oracles.RandomRow("Starship Initial Contact", GameName.Starforged, random).Description;
 
-            var shipTypeOracle = oracles.OracleList.Single(o => o.Name == "Starship Type" && o.Game == GameName.Starforged).Oracles.GetRandomRow(random);
+            var temp = oracles.RandomRow("Starship Type", GameName.Starforged, random);
+            if (!(temp is StandardOracle shipTypeOracle)) throw new Exception();
             var shipType = (shipTypeOracle.Description != "[Starship Mission]") ? shipTypeOracle.Description : $"[Starship Mission {region}]";
 
             ship.ShipType = shipTypeOracle.GetOracleResult(services, GameName.Starforged, random, new string[] { region.ToString() });

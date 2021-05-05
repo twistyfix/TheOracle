@@ -23,27 +23,45 @@ namespace TheOracle.GameCore.Oracle
             var ironOraclesDir = new DirectoryInfo(Path.Combine("IronSworn", "Oracles"));
             if (ironOraclesDir.Exists)
             {
-                foreach (var file in ironOraclesDir.GetFiles("*.json"))
+                foreach (var file in ironOraclesDir.GetFiles("*.json", SearchOption.AllDirectories))
                 {
-                    var oracles = JsonConvert.DeserializeObject<List<OracleTable>>(File.ReadAllText(file.FullName));
-                    oracles.ForEach(o => o.Game = GameName.Ironsworn);
-                    OracleList.AddRange(oracles);
+                    try
+                    {
+                        var oracles = JsonConvert.DeserializeObject<List<OracleTable>>(File.ReadAllText(file.FullName));
+                        oracles.ForEach(o => o.Game = GameName.Ironsworn);
+                        OracleList.AddRange(oracles);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine($"Error loading oracle file {file.Name}");
+                    }
                 }
             }
 
-            DirectoryInfo starOraclesDir = new DirectoryInfo(Path.Combine("StarForged", "Oracles"));
+            DirectoryInfo starOraclesDir = new DirectoryInfo(Path.Combine("StarForged", "Data", "oracles"));
             if (starOraclesDir.Exists)
             {
-                foreach (var file in starOraclesDir.GetFiles("*.json"))
+                foreach (var file in starOraclesDir.GetFiles("*.json", SearchOption.AllDirectories))
                 {
-                    var oracles = JsonConvert.DeserializeObject<List<OracleTable>>(File.ReadAllText(file.FullName));
-                    oracles.ForEach(o => o.Game = GameName.Starforged);
-                    OracleList.AddRange(oracles);
+                    try
+                    {
+                        var category = JsonConvert.DeserializeObject<OracleCategory>(File.ReadAllText(file.FullName));
+                        foreach (var table in category.Oracles)
+                        {
+                            table.Game = GameName.Starforged;
+                            table.Category = category.Name;
+                        }
+                        OracleList.AddRange(category.Oracles);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error loading oracle file {file.Name}\n{ex}");
+                    }
                 }
             }
 
             var ironOraclesPath = Path.Combine("IronSworn", "oracles.json");
-            var starOraclesPath = Path.Combine("StarForged", "StarforgedOracles.json");
+            var starOraclesPath = Path.Combine("StarForged", "StarforgedOracles.json.off");
             var tarotOraclesPath = Path.Combine("IronSworn", "tarot_oracles.json");
             if (File.Exists(ironOraclesPath))
             {
@@ -89,13 +107,28 @@ namespace TheOracle.GameCore.Oracle
         public IOracleEntry RandomRow(string TableName, GameName game = GameName.None, Random rand = null)
         {
             if (rand == null) rand = BotRandom.Instance;
+
+            var category = OracleList.Where(o => o.Category != null)
+                .FirstOrDefault(o => TableName.Contains(o.Category, StringComparison.OrdinalIgnoreCase)
+                && (game == GameName.None || o.Game == game))?.Category;
+
             try
             {
-                return OracleList.Single(ot => ot.MatchTableAlias(TableName) && (ot.Game == game || game == GameName.None)).Oracles.GetRandomRow(rand);
+                IEnumerable<OracleTable> filteredList = OracleList;
+                if (category != null)
+                {
+                    filteredList = OracleList.Where(o => o.Category == category);
+                    TableName = Regex.Replace(TableName, $" ?{category} ?", " ", RegexOptions.IgnoreCase).Trim();
+                }
+
+                var match = filteredList.Single(ot => ot.MatchTableAlias(TableName) && (ot.Game == game || game == GameName.None));
+                var result = match.Oracles.GetRandomRow(rand);
+                return result;
             }
             catch (Exception ex)
             {
-                ArgumentException argEx = new ArgumentException($"Error retrieving oracle '{TableName}' for game '{game}'", ex);
+                string categoryMessage = (category != null) ? $" with category '{category}'" : string.Empty;
+                ArgumentException argEx = new ArgumentException($"Error retrieving oracle '{TableName}'{categoryMessage} for game '{game}'", ex);
                 throw argEx;
             }
         }
@@ -105,14 +138,26 @@ namespace TheOracle.GameCore.Oracle
             if (rand == null) rand = BotRandom.Instance;
             var row = RandomRow(TableName, game, rand);
 
-            var tableData = OracleList.Single(ot => ot.Name == TableName && (ot.Game == game || game == GameName.None));
+            var category = OracleList.Where(o => o.Category != null)
+                .FirstOrDefault(o => TableName.Contains(o.Category, StringComparison.OrdinalIgnoreCase)
+                                    && (game == GameName.None || o.Game == game))?.Category;
+
+            var filteredList = OracleList;
+            if (category != null)
+            {
+                filteredList = OracleList.Where(o => o.Category == category).ToList();
+                TableName = Regex.Replace(TableName, $" ?{category} ?", " ", RegexOptions.IgnoreCase).Trim();
+            }
+
+            var tableData = filteredList.Single(ot => ot.Name == TableName && (ot.Game == game || game == GameName.None));
             game = tableData.Game ?? GameName.None;
 
             string lookup = row.Description;
 
-            var match = Regex.Match(lookup, @"\[.*(\d+)x");
-            if (match.Success && int.TryParse(match.Groups[1].Value, out int rolls))
+            var match = Regex.Match(lookup, @"\[.*((\d+)x|Roll twice)");
+            if (match.Success)
             {
+                if (!int.TryParse(match.Groups[1].Value, out int rolls)) rolls = 2;
                 List<string> ReplaceMultiRollTables = new List<string>();
                 for (int i = 0; i < rolls; i++)
                 {
@@ -143,9 +188,10 @@ namespace TheOracle.GameCore.Oracle
 
             string lookup = row.Description;
 
-            var match = Regex.Match(lookup, @"\[.*(\d+)x");
-            if (match.Success && int.TryParse(match.Groups[1].Value, out int rolls))
+            var match = Regex.Match(lookup, @"\[.*((\d+)x|Roll twice)", RegexOptions.IgnoreCase);
+            if (match.Success)
             {
+                if (!int.TryParse(match.Groups[1].Value, out int rolls)) rolls = 2;
                 List<string> ReplaceMultiRollTables = new List<string>();
                 for (int i = 0; i < rolls; i++)
                 {

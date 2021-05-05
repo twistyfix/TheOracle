@@ -1,5 +1,4 @@
 ﻿using Discord;
-using Discord.Commands;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using TheOracle.BotCore;
 using TheOracle.Core;
-using TheOracle.IronSworn;
 
 namespace TheOracle.GameCore.Oracle
 {
@@ -81,9 +79,16 @@ namespace TheOracle.GameCore.Oracle
             if (match.Success)
             {
                 var splits = tableName.Replace("[", "").Replace("]", "").Split('/');
-                foreach (var item in splits)
+                for (int i = 0; i < splits.Length; i++)
                 {
-                    var tables = TableMatchList(OracleService.OracleList, item, additionalSearchTerms);
+                    var requirementMatch = Regex.Match(splits[i], @"\(([^)]+)\)");
+                    if (requirementMatch.Success)
+                    {
+                        additionalSearchTerms = (additionalSearchTerms ?? new string[] { }).Concat(new string[] { requirementMatch.Groups[1].Value }).ToArray();
+                        splits[i] = splits[i].Replace(requirementMatch.Groups[0].Value, "").Replace("  ", " ").Trim();
+                    }
+
+                    var tables = TableMatchList(OracleService.OracleList, splits[i], additionalSearchTerms);
                     result.AddRange(tables);
                 }
             }
@@ -145,10 +150,10 @@ namespace TheOracle.GameCore.Oracle
             int numberOfRolls;
 
             // Match [2x] style entries
-            if (Regex.IsMatch(value, @"\[\d+x\]"))
+            if (Regex.IsMatch(value, @"\[(\d+x|Roll Twice)\]", RegexOptions.IgnoreCase))
             {
                 var match = Regex.Match(value, @"\[(\d+)x\]");
-                int.TryParse(match.Groups[1].Value, out numberOfRolls);
+                if (!int.TryParse(match.Groups[1].Value, out numberOfRolls)) numberOfRolls = 2;
             }
             else
             {
@@ -157,23 +162,26 @@ namespace TheOracle.GameCore.Oracle
 
             for (int i = 1; i <= numberOfRolls; i++)
             {
-                RollFacade(multiRollTable.Name, depth + 1, additionalSearchTerms);
+                RollFacade(multiRollTable.Name, depth + 1, additionalSearchTerms, multiRollTable);
             }
         }
 
-        private void RollFacade(string table, int depth = 0, string[] additionalSearchTerms = null)
+        private void RollFacade(string table, int depth = 0, string[] additionalSearchTerms = null, OracleTable source = null)
         {
             table = table.Trim();
 
+            if (source?.Requires != null) additionalSearchTerms = (additionalSearchTerms ?? new string[] { }).Concat(source.Requires.Value).ToArray();
             var TablesToRoll = ParseOracleTables(table, additionalSearchTerms);
 
             if (TablesToRoll.Count == 0)
             {
-                if (this.Game == GameName.None) throw new ArgumentException($"{OracleResources.UnknownTableError}{table}");
+                if (this.Game == GameName.None) return;
 
                 //try again without any game name
+                var temp = this.Game;
                 this.Game = GameName.None;
                 RollFacade(table, depth, additionalSearchTerms);
+                this.Game = temp;
             }
 
             if (this.Game == GameName.None) this.Game = TablesToRoll?.FirstOrDefault()?.Game ?? GameName.None;
@@ -203,12 +211,12 @@ namespace TheOracle.GameCore.Oracle
                 if (match.Success)
                 {
                     string nextTable = match.Groups[0].Value;
-                    if (Regex.IsMatch(nextTable, @"^\[\d+x\]"))
+                    if (Regex.IsMatch(nextTable, @"^\[(\d+x|Roll Twice)\]", RegexOptions.IgnoreCase))
                     {
                         MultiRollFacade(nextTable, oracleTable, depth);
                         return;
                     }
-                    RollFacade(nextTable, depth + 1, additionalSearchTerms);
+                    RollFacade(nextTable, depth + 1, additionalSearchTerms, oracleTable);
                 }
 
                 // Match "{Place} of {Namesake}'s {Detail}" style entries

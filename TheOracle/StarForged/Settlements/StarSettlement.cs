@@ -145,7 +145,7 @@ namespace TheOracle.StarForged.Settlements
             int seed = $"{Name}{Region}".GetDeterministicHashCode();
             Random random = new Random(seed);
 
-            this.Authority = oracleService.RandomRow("Settlement Authority", GameName.Starforged, random).Description;
+            this.Authority = oracleService.RandomRow("Authority", GameName.Starforged, random).Description;
 
             this.FirstLooksToReveal = random.Next(1, 4);
             for (int i = 0; i < this.FirstLooksToReveal; i++)

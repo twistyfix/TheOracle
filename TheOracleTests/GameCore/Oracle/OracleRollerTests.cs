@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
-using TheOracle.Core;
 
 namespace TheOracle.GameCore.Oracle.Tests
 {
@@ -26,11 +25,19 @@ namespace TheOracle.GameCore.Oracle.Tests
         {
             var services = new ServiceCollection().AddSingleton(new OracleService().Load()).BuildServiceProvider();
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 28; i < 100; i++)
             {
-                var rand = new Random(i);
-                var roller = new OracleRoller(services, GameName.Starforged, rand).BuildRollResults("sso");
-                Console.WriteLine(string.Join(", ", roller.RollResultList.Select(rr => rr.Result.Description)));
+                try
+                {
+                    var rand = new Random(i);
+                    var roller = new OracleRoller(services, GameName.Starforged, rand).BuildRollResults("Space Sighting Outlands");
+                    Console.WriteLine($"{i} - {string.Join(", ", roller.RollResultList.Select(rr => rr.Result.Description))}");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"Error on {i}");
+                    throw;
+                }
             }
         }
 
@@ -46,7 +53,15 @@ namespace TheOracle.GameCore.Oracle.Tests
                 roller.BuildRollResults("Site Name Format");
                 Console.WriteLine(string.Join(", ", roller.RollResultList.Select(rr => rr.Result.Description)));
             }
-            
+        }
+
+        [TestMethod()]
+        public void ParseOracleTablesTest()
+        {
+            string[] additionalSearchTerms = new string[] { "Outlands" };
+            var roller = new OracleRoller(new ServiceCollection().AddSingleton(new OracleService().Load()).BuildServiceProvider(), GameName.Starforged);
+
+            roller.ParseOracleTables("[Starship Mission]", additionalSearchTerms);
         }
     }
 }
